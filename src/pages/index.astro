@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Propuestas from '../components/Propuestas.astro';
+import Sorteo from '../components/Sorteo.astro';
+import Comunidad from '../components/Comunidad.astro';
+import Innovacion from '../components/Innovacion.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="Lila Viza - # 3" description="Fuerza que Construye, Tacna que Avanza.">
+  <Header />
+  <main class="bg-sun-desert">
+    <Hero />
+    <Propuestas />
+    <Sorteo />
+    <Comunidad />
+    <Innovacion />
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,56 @@
+---
+import ScratchAndWin from './ScratchAndWin.astro';
+---
+
+<section id="sorteo" class="container-px py-16 md:py-24">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-2xl font-bold mb-6 text-[var(--neutral-800)]">Participa y gana premios 💚</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <ScratchAndWin width={340} height={200} revealText="¡Ganaste un premio sorpresa!" />
+      </div>
+
+      <div class="card">
+        <h3 class="font-semibold mb-2 text-[var(--neutral-800)]">Inscríbete al Sorteo</h3>
+        <form id="leadForm" class="space-y-3" aria-live="polite">
+          <div><label class="sr-only">Nombre</label><input name="nombre" placeholder="Nombre completo" required class="input-base"/></div>
+          <div><label class="sr-only">DNI</label><input name="dni" placeholder="DNI (8 dígitos)" pattern="\d{8}" required class="input-base"/></div>
+          <div><label class="sr-only">Correo</label><input type="email" name="email" placeholder="Correo" required class="input-base"/></div>
+          <div><label class="sr-only">Ciudad</label><input name="ciudad" placeholder="Ciudad" required class="input-base"/></div>
+          <div class="flex items-center gap-2"><input id="terms" type="checkbox" required /> <label for="terms">Acepto términos y condiciones</label></div>
+          <div>
+            <button type="submit" class="btn btn-primary w-full">Inscribirme al Sorteo</button>
+          </div>
+        </form>
+        <div id="formSuccess" class="mt-4 hidden p-3 rounded bg-[var(--green-600)]/10 text-[var(--green-700)]">¡Inscripción recibida! Ya participas ✨</div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    // Client-side handling: form + scratch integration
+    const form = document.getElementById('leadForm');
+    const success = document.getElementById('formSuccess');
+    form && form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const fd = new FormData(form);
+      const lead = Object.fromEntries(fd.entries());
+      if(!/^[0-9]{8}$/.test(lead.dni || '')){
+        alert('El DNI debe tener 8 dígitos');
+        return;
+      }
+      localStorage.setItem('fuerza3_sorteo_lead', JSON.stringify({...lead, createdAt:new Date().toISOString()}));
+      success && success.classList.remove('hidden');
+    });
+
+    // Listen to global scratch reveal event
+    window.addEventListener('scratch:revealed', ()=>{
+      // simple celebration: add a floating confetti element
+      const conf = document.createElement('div');
+      conf.textContent = '🎉'; conf.className='absolute top-4 right-4';
+      document.body.appendChild(conf);
+      setTimeout(()=>conf.remove(), 1800);
+    });
+  </script>
+</section>

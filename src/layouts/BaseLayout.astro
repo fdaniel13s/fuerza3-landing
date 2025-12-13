@@ -1,0 +1,30 @@
+---
+const { title = 'Fuerza #3 - Tacna', description = 'Fuerza que Construye, Tacna que Avanza.' } = Astro.props;
+
+// Import theme and global CSS so Astro/Vite/Tailwind can process them
+import '../styles/theme.css';
+import '../styles/global.css';
+
+---
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#1EAA3E" />
+    <meta property="og:site_name" content="Guante #3 - Tacna" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{title}</title>
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/images/candidata.svg" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

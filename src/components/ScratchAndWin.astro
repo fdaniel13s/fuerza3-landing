@@ -1,0 +1,52 @@
+---
+const { width = 340, height = 200, cover = 'gradient', revealText = '¡Ganaste un regalo!', autoReset = false } = Astro.props;
+---
+<div class="card w-full max-w-md" role="application" aria-label="Raspa y gana">
+  <header class="flex items-center justify-between mb-3">
+    <div class="chip">Raspa y gana 💚</div>
+    <div class="badge">Sorteo</div>
+  </header>
+
+  <div class="relative">
+    <div class="sr-only" id="scratch-result">{revealText}</div>
+    <div class="bg-[var(--neutral-50)] rounded-md p-4 text-center" data-revealed="false" id="scratch-content">
+      <div class="text-lg font-semibold text-[var(--green-700)]">{revealText}</div>
+      <p class="text-sm text-[var(--neutral-800)]/70 mt-2">Presenta este mensaje para reclamar tu premio.</p>
+    </div>
+    <div id="scratch-root" class="absolute inset-0 flex items-center justify-center" style="pointer-events:auto"></div>
+  </div>
+
+  <div class="mt-3 flex items-center justify-between">
+    <div class="text-sm" aria-live="polite" id="scratch-progress">Descubierto: 0%</div>
+    <div class="flex gap-2">
+      <button id="scratch-reveal" class="btn btn-outline">Revelar</button>
+      <button id="scratch-reset" class="btn btn-ghost">Reiniciar</button>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import ScratchCard from './ScratchCard.ts';
+  const opts = ${JSON.stringify({ width: +width, height: +height, cover })};
+  const root = document.getElementById('scratch-root');
+  const content = document.getElementById('scratch-content');
+  const progressEl = document.getElementById('scratch-progress');
+  const revealBtn = document.getElementById('scratch-reveal');
+  const resetBtn = document.getElementById('scratch-reset');
+  let card;
+  if(root){
+    card = new ScratchCard(root, Object.assign(opts, { threshold: 55 }));
+    root.addEventListener('scratch:progress', (e)=>{
+      const pct = e.detail.percent || 0;
+      if(progressEl) progressEl.textContent = `Descubierto: ${pct}%`;
+    });
+    root.addEventListener('scratch:revealed', ()=>{
+      if(content){ content.setAttribute('data-revealed','true'); content.classList.add('shine'); }
+      if(progressEl) progressEl.textContent = `Descubierto: 100%`;
+      // dispatch global event
+      window.dispatchEvent(new CustomEvent('scratch:revealed'));
+    });
+  }
+  if(revealBtn){ revealBtn.addEventListener('click', ()=>{ if(card) card.reveal(); }); }
+  if(resetBtn){ resetBtn.addEventListener('click', ()=>{ if(card){ card.reset(); content && content.setAttribute('data-revealed','false'); } }); }
+</script>

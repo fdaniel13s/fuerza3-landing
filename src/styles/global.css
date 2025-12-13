@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --verde-fuerza: #1EAA3E;
+  --amarillo-acento: #F9C300;
+}
+
+html,body,#root{
+  height:100%;
+}
+
+body{
+  /* Avoid @apply here to prevent PostCSS errors; set equivalent styles directly */
+  background-color: #F8FAF9;
+  color: #1f2937; /* tailwind text-gray-800 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+.fade-in{opacity:0;transform:translateY(8px);animation:fadeIn 800ms ease forwards}
+@keyframes fadeIn{to{opacity:1;transform:none}}
+
+.glove-raise{animation:raise 900ms ease forwards}
+@keyframes raise{0%{transform:translateY(20px) scale(0.9)}50%{transform:translateY(-8px) scale(1.05)}100%{transform:translateY(0) scale(1)}}

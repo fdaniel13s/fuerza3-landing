@@ -1,0 +1,30 @@
+[
+  {
+    "id": "empleo",
+    "icon": "🛠️",
+    "title": "Empleo Verde",
+    "brief": "Programas de empleo y capacitación en economía sostenible.",
+    "details": "Impulsaremos proyectos verdes, formación técnica y bolsas de trabajo para jóvenes, priorizando energías limpias y economía circular."
+  },
+  {
+    "id": "educacion",
+    "icon": "💡",
+    "title": "Educación y Tecnología",
+    "brief": "Aulas digitales y formación técnica para todos.",
+    "details": "Modernizaremos la infraestructura educativa con programas de alfabetización digital y becas para carreras tecnológicas."
+  },
+  {
+    "id": "salud",
+    "icon": "❤️",
+    "title": "Salud para la Gente",
+    "brief": "Atención primaria y campañas preventivas.",
+    "details": "Fortaleceremos centros de salud, telemedicina y campañas de prevención para garantizar acceso en toda la región."
+  }, 
+  {
+    "id": "social",
+    "icon": "❤️ ",
+    "title": "Programas sociales para el adulto mayor",
+    "brief": "Incentivar y seguimiento a una mayor atención a nuestra población de la 3era edad",
+    "details": "Fortaleceremos centros de salud, telemedicina y campañas de prevención para garantizar acceso en toda la región."
+  }
+]

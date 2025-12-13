@@ -1,0 +1,25 @@
+---
+import propuestas from '../data/propuestas.json'
+---
+
+<section id="propuestas" class="container-px py-16 md:py-24">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold text-[var(--neutral-800)] mb-6">Lo que lograremos por Tacna Heroica:</h2>
+    <div class="grid-auto-fit">
+      {propuestas.map((p) => (
+        <article class="card card-hover" data-id={p.id} aria-labelledby={`p-title-${p.id}`}>
+          <div class="flex items-start gap-4">
+            <div class="text-4xl text-[var(--green-600)]" aria-hidden>{p.icon}</div>
+            <div>
+              <h3 id={`p-title-${p.id}`} class="text-lg font-semibold text-[var(--neutral-800)]">{p.title}</h3>
+              <p class="text-sm text-[var(--neutral-800)]/80 mt-2">{p.brief}</p>
+            </div>
+          </div>
+          <div class="mt-4">
+            <p class="text-sm text-[var(--neutral-800)]/70">{p.details}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
