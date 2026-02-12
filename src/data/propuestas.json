@@ -1,30 +1,72 @@
 [
   {
-    "id": "empleo",
-    "icon": "🛠️",
-    "title": "Empleo Verde",
-    "brief": "Programas de empleo y capacitación en economía sostenible.",
-    "details": "Impulsaremos proyectos verdes, formación técnica y bolsas de trabajo para jóvenes, priorizando energías limpias y economía circular."
+    "id": 1,
+    "icon": "🏥",
+    "title": "Hospital de Alta Complejidad para el Sur",
+    "brief": "Construiremos el hospital que Tacna necesita.",
+    "details": "Gestionaremos el Hospital de Alta Complejidad para evitar que las familias viajen a Lima o Arequipa por atención especializada. Oncología, cardiología y emergencias avanzadas en nuestra región."
   },
   {
-    "id": "educacion",
-    "icon": "💡",
-    "title": "Educación y Tecnología",
-    "brief": "Aulas digitales y formación técnica para todos.",
-    "details": "Modernizaremos la infraestructura educativa con programas de alfabetización digital y becas para carreras tecnológicas."
+    "id": 2,
+    "icon": "💧",
+    "title": "Agua para Siempre",
+    "brief": "Garantizaremos agua para hogares y agricultores.",
+    "details": "Impulsaremos represas, reservorios y tecnificación de riego para asegurar agua permanente. Tacna tendrá soberanía hídrica y menos conflictos por el recurso."
   },
   {
-    "id": "salud",
-    "icon": "❤️",
-    "title": "Salud para la Gente",
-    "brief": "Atención primaria y campañas preventivas.",
-    "details": "Fortaleceremos centros de salud, telemedicina y campañas de prevención para garantizar acceso en toda la región."
-  }, 
+    "id": 3,
+    "icon": "🚰",
+    "title": "Programa Agua 2040",
+    "brief": "Agua potable continua en toda la región.",
+    "details": "Plantas de tratamiento, desalinización y ampliación de redes urbanas y rurales. El acceso al agua será un derecho real para cada familia."
+  },
   {
-    "id": "social",
-    "icon": "❤️ ",
-    "title": "Programas sociales para el adulto mayor",
-    "brief": "Incentivar y seguimiento a una mayor atención a nuestra población de la 3era edad",
-    "details": "Fortaleceremos centros de salud, telemedicina y campañas de prevención para garantizar acceso en toda la región."
+    "id": 4,
+    "icon": "🏭",
+    "title": "Zona Económica Especial",
+    "brief": "Más empresas, más empleo formal.",
+    "details": "Crearemos incentivos para atraer industria, tecnología y exportación. Tacna será plataforma comercial con Chile y Bolivia generando trabajo digno."
+  },
+  {
+    "id": 5,
+    "icon": "📈",
+    "title": "Canon para el Futuro",
+    "brief": "El dinero del canon no se desperdicia.",
+    "details": "Crearemos un fondo regional que invierta los excedentes del canon en infraestructura y desarrollo para las próximas generaciones."
+  },
+  {
+    "id": 6,
+    "icon": "🧑‍💼",
+    "title": "Apoyo real a MYPES",
+    "brief": "Crédito y capital semilla para emprendedores.",
+    "details": "Fondos de garantía, financiamiento y tecnología para pequeñas empresas. Más negocios formales y empleo local."
+  },
+  {
+    "id": 7,
+    "icon": "🎓",
+    "title": "Institutos Tecnológicos Productivos",
+    "brief": "Estudiar y trabajar al mismo tiempo.",
+    "details": "Educación técnica vinculada a empresas: minería, logística, comercio exterior e industria. Menos migración juvenil y más oportunidades."
+  },
+  {
+    "id": 8,
+    "icon": "🚚",
+    "title": "Corredor Logístico Internacional",
+    "brief": "Tacna será hub comercial del sur.",
+    "details": "Carreteras, plataformas logísticas y puertos secos para reducir costos de exportación y atraer inversión."
+  },
+  {
+    "id": 9,
+    "icon": "🛡️",
+    "title": "Fronteras Seguras",
+    "brief": "Más seguridad y control territorial.",
+    "details": "Videovigilancia, drones y bases integradas para combatir contrabando, trata y delincuencia en la frontera."
+  },
+  {
+    "id": 10,
+    "icon": "🌱",
+    "title": "Remediación Ambiental",
+    "brief": "Minería responsable y salud pública.",
+    "details": "Identificaremos y limpiaremos pasivos ambientales mineros para proteger el agua, la salud y el futuro de nuestras comunidades."
   }
 ]
