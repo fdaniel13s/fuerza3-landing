@@ -1,0 +1,138 @@
+---
+const pageUrl = 'https://www.facebook.com/Lilaviza3';
+const pageId = process.env.FB_PAGE_ID ?? '';
+const pageAccessToken = process.env.FB_PAGE_ACCESS_TOKEN ?? '';
+const iframeSrc =
+  'https://www.facebook.com/plugins/page.php' +
+  '?href=https%3A%2F%2Fwww.facebook.com%2FLilaviza3' +
+  '&tabs=timeline' +
+  '&width=500' +
+  '&height=740' +
+  '&small_header=false' +
+  '&adapt_container_width=true' +
+  '&hide_cover=false' +
+  '&show_facepile=true';
+
+type FbPost = {
+  id: string;
+  message?: string;
+  created_time?: string;
+  permalink_url?: string;
+  full_picture?: string;
+};
+
+let posts: FbPost[] = [];
+let cardsModeEnabled = false;
+
+const truncate = (text: string, max = 220) =>
+  text.length > max ? `${text.slice(0, max).trimEnd()}...` : text;
+
+const getPermalink = (post: FbPost) => {
+  if (post.permalink_url) return post.permalink_url;
+  if (!post.id || !post.id.includes('_')) return pageUrl;
+  const [fbPageId, postId] = post.id.split('_');
+  return `https://www.facebook.com/${fbPageId}/posts/${postId}`;
+};
+
+if (pageId && pageAccessToken) {
+  try {
+    const endpoint = new URL(`https://graph.facebook.com/v21.0/${pageId}/posts`);
+    endpoint.searchParams.set('fields', 'id,message,created_time,permalink_url,full_picture');
+    endpoint.searchParams.set('limit', '6');
+    endpoint.searchParams.set('access_token', pageAccessToken);
+
+    const response = await fetch(endpoint.toString());
+    if (response.ok) {
+      const payload = await response.json();
+      posts = Array.isArray(payload?.data) ? payload.data : [];
+      cardsModeEnabled = posts.length > 0;
+    }
+  } catch {
+    cardsModeEnabled = false;
+  }
+}
+---
+
+<section id="comunidad-digital" class="container-px py-16 md:py-24 bg-section">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-3xl">
+      <h2 class="text-3xl font-bold text-[var(--neutral-800)]">Comunidad Digital</h2>
+      <p class="mt-2 text-[var(--neutral-800)]/80">
+        Publicaciones recientes de la fanpage oficial, actualizadas automaticamente desde Facebook.
+      </p>
+    </div>
+
+    {cardsModeEnabled ? (
+      <div class="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-5">
+        {posts.map((post) => (
+          <article class="card card-hover h-full flex flex-col" data-post-id={post.id}>
+            {post.full_picture ? (
+              <img
+                src={post.full_picture}
+                alt="Publicacion de Facebook"
+                class="w-full aspect-video object-cover rounded-md"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+            ) : (
+              <div class="w-full aspect-video rounded-md bg-[var(--neutral-50)] grid place-items-center text-sm text-[var(--neutral-800)]/60">
+                Publicacion de la comunidad
+              </div>
+            )}
+
+            <p class="mt-3 text-sm text-[var(--neutral-800)]/85 leading-relaxed flex-1 break-words whitespace-pre-line">
+              {post.message ? truncate(post.message) : 'Nueva publicacion disponible en la fanpage oficial.'}
+            </p>
+
+            <div class="mt-4 flex items-center justify-between gap-3">
+              <span class="text-xs text-[var(--neutral-800)]/60">
+                {post.created_time
+                  ? new Date(post.created_time).toLocaleDateString('es-PE', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    })
+                  : 'Facebook'}
+              </span>
+              <a
+                href={getPermalink(post)}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm font-semibold text-[var(--green-700)] hover:underline"
+              >
+                Ver publicacion
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="mt-6 md:mt-8 max-w-3xl mx-auto">
+        <div class="card p-3 md:p-4">
+          <iframe
+            title="Publicaciones de Facebook - Lila Viza"
+            src={iframeSrc}
+            class="w-full rounded-md"
+            style="border:none; width:100%; height:clamp(560px, 75vh, 740px);"
+            scrolling="auto"
+            frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen={true}
+          ></iframe>
+
+          <p class="mt-3 text-xs text-[var(--neutral-800)]/65">
+            Si el feed no carga por bloqueadores o privacidad del navegador, abre la fanpage directamente.
+          </p>
+          <a
+            href={pageUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[var(--green-700)] hover:underline"
+          >
+            Ver fanpage oficial
+          </a>
+        </div>
+      </div>
+    )}
+  </div>
+</section>

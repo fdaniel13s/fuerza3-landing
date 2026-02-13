@@ -54,6 +54,9 @@ jobs:
 
       - name: Build site
         run: npm run build
+        env:
+          FB_PAGE_ID: ${{ vars.FB_PAGE_ID }}
+          FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
 
       - name: Add CNAME from variable (optional)
         if: ${{ vars.CUSTOM_DOMAIN != '' }}

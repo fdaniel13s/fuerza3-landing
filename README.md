@@ -44,6 +44,16 @@ Configúralas en `Settings > Secrets and variables > Actions > Variables`.
 - `CUSTOM_DOMAIN`
   - Ejemplo: `midominio.com`
   - Si está definida, el workflow crea `CNAME` automáticamente.
+- `FB_PAGE_ID`
+  - ID numérico de la fanpage para traer publicaciones en tarjetas.
+
+## Secret opcional del repositorio
+
+Configúralo en `Settings > Secrets and variables > Actions > Secrets`.
+
+- `FB_PAGE_ACCESS_TOKEN`
+  - Token de página de Facebook Graph API.
+  - Si falta, la sección `ComunidadFanpage` usa fallback al iframe del plugin.
 
 ## Dominio personalizado
 
