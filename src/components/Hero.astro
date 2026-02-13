@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL;
 ---
 <section id="inicio" class="container-px py-16 md:py-24 bg-hero">
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -18,8 +19,38 @@
 
     <div class="flex justify-center">
       <div class="card card-hover w-full max-w-sm glass">
-        <img src="/images/perfil_lila_viza.jpg" alt="Candidata" class="w-full h-auto object-cover rounded-md" />
+        <img src={`${base}images/perfil_lila_viza.jpg`} alt="Candidata" class="w-full h-auto object-cover rounded-md" />
       </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto mt-4">
+    <div class="flex flex-wrap items-center gap-4 text-sm">
+      <p class="text-[var(--neutral-800)]/75">Siguenos:</p>
+      <a
+        href="https://www.facebook.com/Lilaviza3"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 text-[var(--neutral-800)]/80 hover:text-[var(--green-700)] transition-colors focus-ring rounded-md px-2 py-1"
+        aria-label="Visitar Facebook"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="h-5 w-5 fill-current">
+          <path d="M13.5 9H16V6h-2.5C10.5 6 9 7.8 9 10.5V13H7v3h2v6h3v-6h3l.5-3H12v-2.5c0-.9.4-1.5 1.5-1.5z" />
+        </svg>
+        Facebook
+      </a>
+      <a
+        href="https://www.tiktok.com/@lilaviza"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 text-[var(--neutral-800)]/80 hover:text-[var(--green-700)] transition-colors focus-ring rounded-md px-2 py-1"
+        aria-label="Visitar TikTok"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="h-5 w-5 fill-current">
+          <path d="M14 3h3c.3 2 1.8 3.6 4 4v3a7.3 7.3 0 0 1-4-1.3V15a6 6 0 1 1-6-6h1v3h-1a3 3 0 1 0 3 3V3z" />
+        </svg>
+        TikTok
+      </a>
     </div>
   </div>
 </section>

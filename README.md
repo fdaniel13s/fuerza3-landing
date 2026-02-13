@@ -1,43 +1,61 @@
-# Astro Starter Kit: Minimal
+# Fuerza3 Landing
 
-```sh
-npm create astro@latest -- --template minimal
+Landing construida con Astro + Tailwind, preparada para despliegue en GitHub Pages.
+
+## Requisitos
+
+- Node.js 20+
+- npm 10+
+
+## Desarrollo local
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Build local
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build
+npm run preview
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Deploy automático en GitHub Pages
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+El repositorio ya incluye el workflow: `.github/workflows/deploy-pages.yml`.
 
-Any static assets, like images, can be placed in the `public/` directory.
+### 1. Activar Pages
 
-## 🧞 Commands
+1. Ve a `Settings > Pages`.
+2. En `Build and deployment`, selecciona `Source: GitHub Actions`.
 
-All commands are run from the root of the project, from a terminal:
+### 2. Hacer push
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Haz push a `main` o `master`. El workflow construye y publica automáticamente.
 
-## 👀 Want to learn more?
+## Variables opcionales del repositorio
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Configúralas en `Settings > Secrets and variables > Actions > Variables`.
+
+- `SITE_URL`
+  - Ejemplo: `https://usuario.github.io` o `https://midominio.com`
+  - Si no existe, se usa `https://<owner>.github.io`.
+- `CUSTOM_DOMAIN`
+  - Ejemplo: `midominio.com`
+  - Si está definida, el workflow crea `CNAME` automáticamente.
+
+## Dominio personalizado
+
+1. Define `SITE_URL=https://midominio.com`.
+2. Define `CUSTOM_DOMAIN=midominio.com`.
+3. Configura DNS:
+   - Apex (`@`): registros A hacia GitHub Pages.
+   - Subdominio (`www`): registro CNAME apuntando a `<owner>.github.io`.
+4. En `Settings > Pages`, confirma que el dominio aparece y habilita `Enforce HTTPS` cuando esté disponible.
+
+## Notas técnicas incluidas
+
+- Rutas de imágenes y home ajustadas con `import.meta.env.BASE_URL` para funcionar en subruta y dominio propio.
+- `astro.config.mjs` configura `site` y `base` automáticamente según entorno.
+- Se incluye `public/.nojekyll` para evitar problemas con assets en `_astro`.

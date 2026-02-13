@@ -1,11 +1,12 @@
 ---
+const base = import.meta.env.BASE_URL;
 ---
 <section id="innovacion" class="max-w-6xl mx-auto px-6 py-12">
   <h2 class="text-2xl font-bold mb-4">Encuentra a nuestros embajadores QR</h2>
   <p class="text-gray-600 mb-6">Las personas con polos verdes y un QR invitan a escanear y visitar esta landing.</p>
   <div class="flex flex-col md:flex-row items-center gap-6">
     <div class="w-full md:w-1/2 p-4 bg-white rounded-lg shadow">
-      <img src="/images/candidata.svg" alt="Embajadores" class="w-full h-auto"/>
+      <img src={`${base}images/candidata.svg`} alt="Embajadores" class="w-full h-auto"/>
     </div>
     <div class="w-full md:w-1/2">
       <ul class="space-y-3">

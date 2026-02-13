@@ -30,7 +30,7 @@ export default class ScratchCard {
     // draw cover
     if(this.options.cover === 'image'){
       const img = new Image();
-      img.src = '/images/scratch-cover.png';
+      img.src = `${import.meta.env.BASE_URL}images/scratch-cover.png`;
       img.onload = () => {
         this.ctx && this.ctx.drawImage(img, 0, 0, width, height);
       };
