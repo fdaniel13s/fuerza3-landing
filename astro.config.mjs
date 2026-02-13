@@ -10,11 +10,13 @@ const owner = process.env.GITHUB_REPOSITORY_OWNER ?? '';
 const siteFromEnv = process.env.SITE_URL;
 
 const site = siteFromEnv ?? (owner ? `https://${owner}.github.io` : 'http://localhost:4321');
-const base =
+const basePath =
   process.env.BASE_PATH ?? (isGithubActions && !siteFromEnv && repoName ? `/${repoName}` : '/');
+const normalizedBase =
+  basePath === '/' ? '/' : `/${basePath.replace(/^\/+|\/+$/g, '')}/`;
 
 export default defineConfig({
 	site,
-	base,
+	base: normalizedBase,
 	integrations: [tailwind()],
 });

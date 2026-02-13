@@ -29,8 +29,11 @@ export default class ScratchCard {
 
     // draw cover
     if(this.options.cover === 'image'){
+      const base = import.meta.env.BASE_URL.endsWith('/')
+        ? import.meta.env.BASE_URL
+        : `${import.meta.env.BASE_URL}/`;
       const img = new Image();
-      img.src = `${import.meta.env.BASE_URL}images/scratch-cover.png`;
+      img.src = `${base}images/scratch-cover.png`;
       img.onload = () => {
         this.ctx && this.ctx.drawImage(img, 0, 0, width, height);
       };

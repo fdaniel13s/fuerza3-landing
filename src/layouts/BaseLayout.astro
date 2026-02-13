@@ -4,7 +4,9 @@ import '../styles/theme.css';
 import '../styles/global.css';
 
 const { title = 'Fuerza #3 - Tacna', description = 'Fuerza que Construye, Tacna que Avanza.' } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 const imagePath = `${base}images/perfil_lila_viza.jpg`;
 const ogImage = new URL(imagePath, Astro.site ?? Astro.url).toString();
 ---

@@ -1,5 +1,7 @@
 ---
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 <header class="w-full bg-white sticky top-0 z-sticky border-b" role="banner">
   <div class="container mx-auto flex items-center justify-between py-3 px-6">
