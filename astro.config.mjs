@@ -4,6 +4,7 @@ import { existsSync, readFileSync } from 'node:fs';
 
 // https://astro.build/config
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
 const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
 const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? '';
@@ -24,5 +25,5 @@ const normalizedBase =
 export default defineConfig({
 	site,
 	base: normalizedBase,
-	integrations: [tailwind()],
+  integrations: [tailwind(), sitemap()],
 });

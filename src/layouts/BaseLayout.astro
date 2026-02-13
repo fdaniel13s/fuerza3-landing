@@ -10,6 +10,23 @@ const base = import.meta.env.BASE_URL.endsWith('/')
 const imagePath = `${base}images/perfil_lila_viza.jpg`;
 const faviconPath = `${imagePath}?v=2`;
 const ogImage = new URL(imagePath, Astro.site ?? Astro.url).toString();
+const canonicalUrl = Astro.url.href;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Lila Viza Condori',
+  alternateName: ['Lila Viza'],
+  url: (Astro.site ?? Astro.url).toString(),
+  image: ogImage,
+  sameAs: ['https://www.facebook.com/Lilaviza3', 'https://www.tiktok.com/@lilaviza'],
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: 'Tacna',
+    addressCountry: 'PE',
+  },
+  description,
+};
 ---
 <!doctype html>
 <html lang="es" class="scroll-smooth">
@@ -25,13 +42,17 @@ const ogImage = new URL(imagePath, Astro.site ?? Astro.url).toString();
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImage} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <link rel="canonical" href={Astro.url.href} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
   </head>
   <body>
     <slot />
