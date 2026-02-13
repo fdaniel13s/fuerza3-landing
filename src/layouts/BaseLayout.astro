@@ -8,6 +8,7 @@ const base = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const imagePath = `${base}images/perfil_lila_viza.jpg`;
+const faviconPath = `${imagePath}?v=2`;
 const ogImage = new URL(imagePath, Astro.site ?? Astro.url).toString();
 ---
 <!doctype html>
@@ -16,7 +17,9 @@ const ogImage = new URL(imagePath, Astro.site ?? Astro.url).toString();
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/jpeg" href={imagePath} />
+    <link rel="icon" type="image/jpeg" href={faviconPath} />
+    <link rel="shortcut icon" type="image/jpeg" href={faviconPath} />
+    <link rel="apple-touch-icon" href={imagePath} />
     <meta name="theme-color" content="#1EAA3E" />
     <meta property="og:site_name" content="Guante #3 - Tacna" />
     <meta property="og:type" content="website" />
