@@ -1,0 +1,77 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+---
+
+<section id="sobre-lila" class="relative overflow-hidden bg-section">
+  <div class="absolute -top-20 -left-24 h-64 w-64 rounded-full bg-[var(--green-600)]/10 blur-3xl" aria-hidden="true"></div>
+  <div class="absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-[var(--yellow-400)]/20 blur-3xl" aria-hidden="true"></div>
+
+  <div class="container-px py-14 md:py-20">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8 items-start">
+      <article class="lg:col-span-3 card card-hover relative">
+        <span class="chip">Historia y Presentacion</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-extrabold text-[var(--neutral-800)]">Sobre Lila Viza</h2>
+
+        <p class="mt-4 text-[var(--neutral-800)]/85 leading-relaxed">
+          Lila Viza es licenciada en Comunicacion Social, con Maestria en Gestion Empresarial y especializaciones
+          en gestion publica, comunicacion y marketing. Cuenta con mas de 12 anos de experiencia en el sector
+          publico y privado en comunicacion estrategica, gestion institucional y trabajo articulado con la ciudadania.
+        </p>
+
+        <p class="mt-4 text-[var(--neutral-800)]/80 leading-relaxed">
+          Ha liderado equipos, brindado soporte legislativo y desarrollado iniciativas de divulgacion y formacion,
+          destacando por su vocacion de servicio publico y compromiso con el desarrollo de la poblacion.
+        </p>
+
+        <blockquote class="mt-6 border-l-4 border-[var(--green-600)] pl-4 text-lg font-semibold text-[var(--green-700)]">
+          “Vocacion de servicio, trabajo articulado y compromiso con la ciudadania.”
+        </blockquote>
+      </article>
+
+      <aside class="lg:col-span-2">
+        <div class="card p-3 md:p-4 relative w-full max-w-xs md:max-w-sm mx-auto">
+          <div class="rounded-[calc(var(--radius)-.35rem)] bg-[var(--neutral-50)] p-2">
+            <img
+              src={`${base}images/perfil_lila_viza.jpg`}
+              alt="Retrato de Lila Viza"
+              class="w-full h-auto object-contain rounded-md"
+              loading="lazy"
+            />
+          </div>
+          <div class="mt-3 flex items-center justify-between">
+            <p class="font-semibold text-[var(--neutral-800)]">Lila Viza</p>
+            <span class="badge">Tacna</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="max-w-7xl mx-auto mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <article class="card h-full">
+        <h3 class="text-lg font-bold text-[var(--neutral-800)]">Trayectoria profesional</h3>
+        <p class="mt-2 text-sm text-[var(--neutral-800)]/80">
+          Profesional especializada en gestion publica y comunicacion estrategica, con experiencia liderando proyectos
+          e iniciativas orientadas al bienestar ciudadano.
+        </p>
+      </article>
+
+      <article class="card h-full">
+        <h3 class="text-lg font-bold text-[var(--neutral-800)]">Transparencia</h3>
+        <p class="mt-2 text-sm text-[var(--neutral-800)]/80">
+          Cuenta con una trayectoria transparente y respetuosa de la ley, sin antecedentes penales ni sentencias,
+          comprometida con el debido proceso y la verdad.
+        </p>
+      </article>
+
+      <article class="card h-full">
+        <h3 class="text-lg font-bold text-[var(--neutral-800)]">Compromiso social</h3>
+        <p class="mt-2 text-sm text-[var(--neutral-800)]/80">
+          Promueve la seguridad, la justicia y la defensa de los pueblos, impulsando la democracia, la lucha contra
+          la corrupcion y oportunidades para todos.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>

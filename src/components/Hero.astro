@@ -5,6 +5,12 @@ const base = import.meta.env.BASE_URL.endsWith('/')
 ---
 <section id="inicio" class="container-px py-16 md:py-24 bg-hero">
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    <div class="flex justify-center">
+      <div class="card card-hover w-full max-w-sm glass">
+        <img src={`${base}images/perfil_lila_viza.jpg`} alt="Candidata" class="w-full h-auto object-cover rounded-md" />
+      </div>
+    </div>
+
     <div class="space-y-6">
       <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-[var(--neutral-800)]">
         Conoce las propuestas para el futuro de Tacna</h1>
@@ -18,16 +24,10 @@ const base = import.meta.env.BASE_URL.endsWith('/')
         Nuestro símbolo es el guante con el número 3,
         demostrando fuerza, esperanza y acción ciudadana.</p>
     </div>
-
-    <div class="flex justify-center">
-      <div class="card card-hover w-full max-w-sm glass">
-        <img src={`${base}images/perfil_lila_viza.jpg`} alt="Candidata" class="w-full h-auto object-cover rounded-md" />
-      </div>
-    </div>
   </div>
 
-  <div class="max-w-7xl mx-auto mt-4">
-    <div class="flex flex-wrap items-center gap-4 text-sm">
+  <div class="max-w-7xl mx-auto mt-6">
+    <div class="mx-auto w-fit flex flex-wrap items-center justify-center gap-3 md:gap-4 text-sm rounded-full border border-[var(--neutral-800)]/10 bg-white/70 px-4 py-2">
       <p class="text-[var(--neutral-800)]/75">Siguenos:</p>
       <a
         href="https://www.facebook.com/Lilaviza3"
