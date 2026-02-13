@@ -32,7 +32,15 @@ jobs:
       - name: Configure site and base path
         shell: bash
         run: |
-          if [ -n "${{ vars.SITE_URL }}" ]; then
+          CUSTOM_DOMAIN="${{ vars.CUSTOM_DOMAIN }}"
+          if [ -z "$CUSTOM_DOMAIN" ] && [ -f public/CNAME ]; then
+            CUSTOM_DOMAIN="$(tr -d '\r\n' < public/CNAME)"
+          fi
+
+          if [ -n "$CUSTOM_DOMAIN" ]; then
+            echo "SITE_URL=https://$CUSTOM_DOMAIN" >> "$GITHUB_ENV"
+            echo "BASE_PATH=/" >> "$GITHUB_ENV"
+          elif [ -n "${{ vars.SITE_URL }}" ]; then
             echo "SITE_URL=${{ vars.SITE_URL }}" >> "$GITHUB_ENV"
             echo "BASE_PATH=/" >> "$GITHUB_ENV"
           else
@@ -47,7 +55,7 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Add CNAME (optional)
+      - name: Add CNAME from variable (optional)
         if: ${{ vars.CUSTOM_DOMAIN != '' }}
         run: echo "${{ vars.CUSTOM_DOMAIN }}" > dist/CNAME
 
